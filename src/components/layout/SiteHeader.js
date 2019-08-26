@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from "react-redux";
 
-function SiteHeader() {
-    return (
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+const header = ({ user }) => (
       <header id="siteHeader" className="main-header fixed-top">
 
       <a href="/" className="brand-link">
@@ -38,7 +42,7 @@ function SiteHeader() {
       </li>
       <li className="nav-item">
       <a className="nav-link" id="navprofile" href="/">
-      <i className="fas fa-user-circle"></i><span className="nav-link-text ml-2">Karl Karlsson</span>
+      <i className="fas fa-user-circle"></i><span className="nav-link-text ml-2">{user.firstname} {user.lastname}</span>
       </a>
       </li>
       </ul>
@@ -46,7 +50,8 @@ function SiteHeader() {
       </nav>
             
       </header>
-    );
-}
+);
+
+const SiteHeader = connect(mapStateToProps)(header);
 
 export default SiteHeader;
