@@ -6,6 +6,7 @@ import SiteFooter from './SiteFooter'
 import SiteContent from './Content'
 import GenericModal from './GenericModal'
 
+
 function SiteLayout() {
     return (
       <div>

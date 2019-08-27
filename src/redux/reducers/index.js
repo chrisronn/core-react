@@ -14,8 +14,11 @@ function rootReducer(state = initialState, action) {
         return Object.assign({}, state, {
             articles: state.customers.concat(action.payload)
         });
-    } else if (action.type === GET_USER) {
+    }
+
+    if (action.type === GET_USER) {
         return Object.assign({}, state, {
+            //user: state.user.concat(action.payload)
             user: action.payload
         });
     }

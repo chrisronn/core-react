@@ -1,17 +1,32 @@
-import React from 'react';
-//import './App.css';
+import React, { Component } from "react";
+
+import { connect } from "react-redux";
+import { getUser } from "../redux/actions/index";
 
 import SiteLayout from './layout/SiteLayout';
 
-function App() {
-  return (
-    <div>
+export class App extends Component {
 
-      <SiteLayout />
-      
+  componentDidMount() {
+    this.props.getUser();
+  }
 
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <SiteLayout />
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { getUser }
+)(App);
