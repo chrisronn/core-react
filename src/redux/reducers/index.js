@@ -1,11 +1,11 @@
 
 
-import { GET_CUSTOMERS } from "../constants/action-types";
-import { GET_USER } from "../constants/action-types";
+import { GET_CUSTOMERS } from "../actions/types";
+import { GET_USER } from "../actions/types";
 
 const initialState = {
     customers: [],
-    user: {firstname: "", lastname: ""}
+    user: {}
 };
 
 function rootReducer(state = initialState, action) {
@@ -17,10 +17,10 @@ function rootReducer(state = initialState, action) {
     }
 
     if (action.type === GET_USER) {
-        return Object.assign({}, state, {
-            //user: state.user.concat(action.payload)
+        return {
+            ...state,
             user: action.payload
-        });
+        };
     }
 
     return state;

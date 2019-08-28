@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React from 'react';
 import { connect } from "react-redux";
 
-export class SiteHeader extends Component {
+const mapStateToProps = state => {
+  return { user: state.user };
+};
 
-  render() {
-    return (
+const header = ({ user }) => (
       <header id="siteHeader" className="main-header fixed-top">
 
       <a href="/" className="brand-link">
@@ -41,7 +42,7 @@ export class SiteHeader extends Component {
       </li>
       <li className="nav-item">
       <a className="nav-link" id="navprofile" href="/">
-      <i className="fas fa-user-circle"></i><span className="nav-link-text ml-2">{this.props.user.firstname} {this.props.user.lastname}</span>
+      <i className="fas fa-user-circle"></i><span className="nav-link-text ml-2">{user.firstname} {user.lastname}</span>
       </a>
       </li>
       </ul>
@@ -49,14 +50,8 @@ export class SiteHeader extends Component {
       </nav>
             
       </header>
-    );
-  }    
-}
+);
 
-function mapStateToProps(state) {
-  return {
-    user: state.user
-  };
-}
+const SiteHeader = connect(mapStateToProps)(header);
 
-export default connect(mapStateToProps)(SiteHeader);
+export default SiteHeader;

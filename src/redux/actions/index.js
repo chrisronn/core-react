@@ -1,7 +1,7 @@
 
 
-import { GET_CUSTOMERS } from "../constants/action-types";
-import { GET_USER } from "../constants/action-types";
+import { GET_CUSTOMERS } from "./types";
+import { GET_USER } from "./types";
 
 import axios from 'axios';
 
@@ -11,10 +11,12 @@ export function getCustomers(payload) {
 
 export function getUser() {
     return function(dispatch) {
-      return axios.get("/data/user.json")
+      axios.get("/data/user.json")
       .then(res => {
-          console.log("Users: " + res.data);
-          dispatch({ type: GET_USER, payload: res.data });
+          dispatch({ 
+            type: GET_USER, 
+            payload: res.data 
+          });
         });
     };
   }

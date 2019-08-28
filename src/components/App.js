@@ -7,7 +7,7 @@ import SiteLayout from './layout/SiteLayout';
 
 export class App extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getUser();
   }
 
@@ -20,13 +20,4 @@ export class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  { getUser }
-)(App);
+export default connect(null, { getUser })(App);
