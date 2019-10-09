@@ -7,8 +7,8 @@ import SiteContent from './Content'
 import GenericModal from './GenericModal'
 
 
-function SiteLayout() {
-    return (
+const SiteLayout = () => (
+    
       <div>
         <div className="wrapper">
 
@@ -28,7 +28,7 @@ function SiteLayout() {
         <GenericModal />
 
     </div>
-    );
-}
+);
+
 
 export default SiteLayout;
