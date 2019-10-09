@@ -2,5 +2,6 @@
 
 export const GET_CUSTOMERS = "GET_CUSTOMERS";
 export const GET_USER = "GET_USER";
+export const GET_LAYOUT_CONTENT_STYLE = "GET_LAYOUT_CONTENT_STYLE";
 
 

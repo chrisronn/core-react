@@ -2,11 +2,18 @@
 
 import { GET_CUSTOMERS } from "./types";
 import { GET_USER } from "./types";
+import { GET_LAYOUT_CONTENT_STYLE } from "./types";
 
 import axios from 'axios';
 
 export function getCustomers(payload) {
     return { type: GET_CUSTOMERS, payload }
+};
+
+export function getLayoutContentStyle(payload) {
+  return {
+    type: GET_LAYOUT_CONTENT_STYLE, payload 
+  }
 };
 
 export function getUser() {

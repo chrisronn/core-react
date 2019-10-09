@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect, useSelector } from "react-redux";
 
 import SiteHeader from './SiteHeader'
 import SiteRight from './SiteRight'
@@ -7,8 +8,11 @@ import SiteContent from './Content'
 import GenericModal from './GenericModal'
 
 
-const SiteLayout = () => (
-    
+const SiteLayout = () => {
+
+    const layoutContentStyle = useSelector(state => state.layoutContentStyle);
+  
+    return (
       <div>
         <div className="wrapper">
 
@@ -16,7 +20,7 @@ const SiteLayout = () => (
 
           <div className="floating-message text-center icon-loader" style={{ display: 'none' }}><i className="fas fa-spinner fa-spin"></i></div>
 
-            <div className="content-wrapper">      
+            <div className="content-wrapper" style={layoutContentStyle}>      
                 <SiteContent />
             </div> 
             <div id="sidebar-overlay"></div>
@@ -28,7 +32,10 @@ const SiteLayout = () => (
         <GenericModal />
 
     </div>
-);
+  );
+      
+};
 
-
-export default SiteLayout;
+export default connect(
+  null
+)(SiteLayout);
