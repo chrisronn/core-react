@@ -7,7 +7,6 @@ import SiteFooter from './SiteFooter'
 import SiteContent from './Content'
 import GenericModal from './GenericModal'
 
-
 const SiteLayout = () => {
 
     const layoutContentStyle = useSelector(state => state.layoutContentStyle);

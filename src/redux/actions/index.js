@@ -2,7 +2,7 @@
 
 import { GET_CUSTOMERS } from "./types";
 import { GET_USER } from "./types";
-import { GET_LAYOUT_CONTENT_STYLE } from "./types";
+import { UPDATE_LAYOUT_CONTENT_STYLE } from "./types";
 
 import axios from 'axios';
 
@@ -10,9 +10,9 @@ export function getCustomers(payload) {
     return { type: GET_CUSTOMERS, payload }
 };
 
-export function getLayoutContentStyle(payload) {
+export function updateLayoutContentStyle(payload) {
   return {
-    type: GET_LAYOUT_CONTENT_STYLE, payload 
+    type: UPDATE_LAYOUT_CONTENT_STYLE, payload 
   }
 };
 

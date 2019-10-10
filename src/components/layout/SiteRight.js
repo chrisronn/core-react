@@ -29,7 +29,7 @@ function SiteRight() {
         </div>
               
         <div className="input-group mb-2">
-        <input type="text" className="form-control search-nav" id="searchFT" name="searchFT" value="" />
+        <input type="text" className="form-control search-nav" id="searchFT" name="searchFT" />
         <div className="input-group-prepend">
         <button name="search" id="global-search-btn" className="btn btn-default" data-toggle="modal" data-target="#genericModal"><i className="fa fa-search"></i></button>
         </div>

@@ -2,7 +2,7 @@
 
 import { GET_CUSTOMERS } from "../actions/types";
 import { GET_USER } from "../actions/types";
-import { GET_LAYOUT_CONTENT_STYLE } from "../actions/types";
+import { UPDATE_LAYOUT_CONTENT_STYLE } from "../actions/types";
 
 const initialState = {
     customers: [],
@@ -18,10 +18,11 @@ function rootReducer(state = initialState, action) {
         });
     }
 
-    if (action.type === GET_LAYOUT_CONTENT_STYLE) {
-        return Object.assign({}, state, {
-            layoutContentStyle: state.layoutContentStyle.concat(action.payload)
-        });
+    if (action.type === UPDATE_LAYOUT_CONTENT_STYLE) {
+        return {
+            ...state,
+            layoutContentStyle: action.payload
+        };
     }
 
     if (action.type === GET_USER) {

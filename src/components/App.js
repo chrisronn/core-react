@@ -2,33 +2,38 @@ import React, { Component } from "react";
 import { connect} from "react-redux";
 
 import { getUser } from "../redux/actions/index";
+import { updateLayoutContentStyle } from "../redux/actions/index";
 
 import SiteLayout from './layout/SiteLayout';
 
-/*
-setLayoutHeights () {
+var layoutHeights = () => {
 
-  var windowHeight = window.innerHeight;
-  var siteHeaderHeight = document.getElementById('siteHeader').clientHeight;
-  var siteFooterHeight = document.getElementById('siteFooter').clientHeight;
-  var contentLeftHeight =  document.getElementById('contentLeft') ? document.getElementById('contentLeft').clientHeight : 0;
+  const windowHeight = window.innerHeight;
+  const siteHeaderHeight = document.querySelector('#siteHeader').clientHeight;
+  const siteFooterHeight = document.querySelector('#siteFooter').clientHeight;
+  const contentLeftHeight =  document.querySelector('#contentLeft') ? document.querySelector('#contentLeft').clientHeight : 0;
 
-  var max = windowHeight;
-  if(contentLeftHeight > windowHeight) {
-    max = contentLeftHeight;
-  }
-  var offset = 1;
-  var contentHeight = max - siteHeaderHeight - siteFooterHeight - offset;
-  var sidebarHeight = max - siteHeaderHeight - offset;
+  const max = contentLeftHeight > windowHeight ? contentLeftHeight : windowHeight;
+  const offset = 1;
+  const contentHeight = max - siteHeaderHeight - siteFooterHeight - offset;
+  const sidebarHeight = max - siteHeaderHeight - offset;
 
-  this.$store.dispatch('setLayoutHeights', {contentHeight, sidebarHeight});
-}
-*/
+  console.log("contentHeight: " + contentHeight);
+  console.log("sidebarHeight: " + sidebarHeight);
+
+  return contentHeight;
+
+};
 
 export class App extends Component {
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.props.getUser();
+  }
+
+  componentDidMount() {    
+    this.props.updateLayoutContentStyle({'minHeight': layoutHeights() + 'px' })
+    //window.addEventListener('resize', this.props.updateLayoutContentStyle({'minHeight': layoutHeights() + 'px' })); 
   }
 
   render() {
@@ -40,4 +45,4 @@ export class App extends Component {
   }
 }
 
-export default connect(null, { getUser })(App);
+export default connect(null, { getUser, updateLayoutContentStyle })(App);
