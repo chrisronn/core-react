@@ -1,7 +1,0 @@
-
-
-export const GET_CUSTOMERS = "GET_CUSTOMERS";
-export const GET_USER = "GET_USER";
-export const UPDATE_LAYOUT_CONTENT_STYLE = "UPDATE_LAYOUT_CONTENT_STYLE";
-
-

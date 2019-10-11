@@ -1,18 +1,15 @@
 
-
-import { GET_CUSTOMERS } from "./types";
-import { GET_USER } from "./types";
-import { UPDATE_LAYOUT_CONTENT_STYLE } from "./types";
+import C from "../actions/constants";
 
 import axios from 'axios';
 
 export function getCustomers(payload) {
-    return { type: GET_CUSTOMERS, payload }
+    return { type: C.GET_CUSTOMERS, payload }
 };
 
 export function updateLayoutContentStyle(payload) {
   return {
-    type: UPDATE_LAYOUT_CONTENT_STYLE, payload 
+    type: C.UPDATE_LAYOUT_CONTENT_STYLE, payload 
   }
 };
 
@@ -21,7 +18,7 @@ export function getUser() {
       axios.get("/data/user.json")
       .then(res => {
           dispatch({ 
-            type: GET_USER, 
+            type: C.GET_USER, 
             payload: res.data 
           });
         });
