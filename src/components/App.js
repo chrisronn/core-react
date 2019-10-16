@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import { connect} from "react-redux";
+import React from "react";
 
-import { getUser } from "../redux/actions/index";
-import { updateLayoutContentStyle } from "../redux/actions/index";
+//import { connect} from "react-redux";
+
+//import { getUser } from "../redux/actions/index";
+//import { updateLayoutContentStyle } from "../redux/actions/index";
 
 import SiteLayout from './layout/SiteLayout';
 
+/*
 var layoutHeights = () => {
 
   const windowHeight = window.innerHeight;
@@ -24,9 +26,11 @@ var layoutHeights = () => {
   return contentHeight;
 
 };
+*/
+const App = () => {  
 
-export class App extends Component {
 
+/*
   UNSAFE_componentWillMount() {
     this.props.getUser();
   }
@@ -35,14 +39,14 @@ export class App extends Component {
     this.props.updateLayoutContentStyle({'minHeight': layoutHeights() + 'px' })
     //window.addEventListener('resize', this.props.updateLayoutContentStyle({'minHeight': layoutHeights() + 'px' })); 
   }
-
-  render() {
-    return (
-      <div>
-        <SiteLayout />
-      </div>
-    );
-  }
+*/
+  
+  return (
+    <div>
+      <SiteLayout />
+    </div>
+  );
+  
 }
 
-export default connect(null, { getUser, updateLayoutContentStyle })(App);
+export default App;

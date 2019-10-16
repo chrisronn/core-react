@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 
@@ -57,6 +57,4 @@ const SiteHeader = () => {
       
 };
 
-export default connect(
-  null
-)(SiteHeader);
+export default SiteHeader;
