@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-//import { connect} from "react-redux";
-
-//import { getUser } from "../redux/actions/index";
-//import { updateLayoutContentStyle } from "../redux/actions/index";
+import { useDispatch } from "react-redux";
+import { getUser, updateLayoutContentStyle } from "../redux/actions/index";
 
 import SiteLayout from './layout/SiteLayout';
 
-/*
+
 var layoutHeights = () => {
 
   const windowHeight = window.innerHeight;
@@ -26,21 +24,18 @@ var layoutHeights = () => {
   return contentHeight;
 
 };
-*/
+
 const App = () => {  
 
+  const dispatch = useDispatch();
 
-/*
-  UNSAFE_componentWillMount() {
-    this.props.getUser();
-  }
+  useEffect(() => {  
+    
+    dispatch(getUser());
+    dispatch(updateLayoutContentStyle({ 'minHeight': layoutHeights() + 'px' }));
+    
+  }, [dispatch]);
 
-  componentDidMount() {    
-    this.props.updateLayoutContentStyle({'minHeight': layoutHeights() + 'px' })
-    //window.addEventListener('resize', this.props.updateLayoutContentStyle({'minHeight': layoutHeights() + 'px' })); 
-  }
-*/
-  
   return (
     <div>
       <SiteLayout />
