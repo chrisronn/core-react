@@ -10,10 +10,24 @@ export function getCustomers() {
   }
 };
 
-export function updateLayoutContentStyle(size) {
+export function updateContentHeight(height) {
   return {
-    type: C.UPDATE_LAYOUT_CONTENT_STYLE,
-    payload: size 
+    type: C.UPDATE_CONTENT_HEIGHT,
+    payload: height 
+  }
+};
+
+export function updateSidebarHeight(height) {
+  return {
+    type: C.UPDATE_SIDEBAR_HEIGHT,
+    payload: height 
+  }
+};
+
+export function updateSidebarClass(className) {
+  return {
+    type: C.UPDATE_SIDEBAR_CLASS,
+    payload: className 
   }
 };
 

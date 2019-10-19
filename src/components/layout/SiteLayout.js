@@ -9,26 +9,31 @@ import GenericModal from './GenericModal'
 
 const SiteLayout = () => {
 
-    const layoutContentStyle = useSelector(state => state.layoutContentStyle);
+  const contentHeight = useSelector(state => state.contentHeight);
+  const sidebarClass = useSelector(state => state.sidebarClass);
   
-    return (
-      <div>
-        <div className="wrapper">
+  let contentStyle = {
+    minHeight: contentHeight + "px"
+  };
+  
+  return (
+    <div class={sidebarClass}>
+      <div className="wrapper">
 
-            <SiteHeader />
+        <SiteHeader />
 
-          <div className="floating-message text-center icon-loader" style={{ display: 'none' }}><i className="fas fa-spinner fa-spin"></i></div>
+      <div className="floating-message text-center icon-loader" style={{ display: 'none' }}><i className="fas fa-spinner fa-spin"></i></div>
 
-            <div className="content-wrapper" style={layoutContentStyle}>      
-                <SiteContent />
-            </div> 
-            <div id="sidebar-overlay"></div>
+      <div className="content-wrapper whatever" style={contentStyle}>      
+            <SiteContent />
+        </div> 
+        <div id="sidebar-overlay"></div>
 
-            <SiteFooter />
-            <SiteRight />    
-        </div>
-        
-        <GenericModal />
+        <SiteFooter />
+        <SiteRight />    
+      </div>
+      
+      <GenericModal />
 
     </div>
   );

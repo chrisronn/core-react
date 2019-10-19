@@ -2,7 +2,10 @@
 const initialState = {
     customers: [],
     user: {},
-    layoutContentStyle: {}
+    contentHeight: "",
+    sidebarHeight: "",
+    sidebarClass: "noSideMenu"
+
 };
 
 export default initialState;

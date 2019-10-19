@@ -10,10 +10,24 @@ const rootReducer = (state = initialState, action) => {
         });
     }
 
-    if (action.type === C.UPDATE_LAYOUT_CONTENT_STYLE) {
+    if (action.type === C.UPDATE_CONTENT_HEIGHT) {
         return {
             ...state,
-            layoutContentStyle: action.payload
+            contentHeight: action.payload
+        };
+    }
+
+    if (action.type === C.UPDATE_SIDEBAR_HEIGHT) {
+        return {
+            ...state,
+            sidebarHeight: action.payload
+        };
+    }
+
+    if (action.type === C.UPDATE_SIDEBAR_CLASS) {
+        return {
+            ...state,
+            sidebarClass: action.payload
         };
     }
 
