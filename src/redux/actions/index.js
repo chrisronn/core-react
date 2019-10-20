@@ -3,13 +3,6 @@ import C from "../actions/constants";
 
 import axios from 'axios';
 
-export function getCustomers() {
-  return {
-    type: C.GET_CUSTOMERS,
-    payload: []
-  }
-};
-
 export function updateContentHeight(height) {
   return {
     type: C.UPDATE_CONTENT_HEIGHT,
@@ -31,19 +24,47 @@ export function updateSidebarClass(className) {
   }
 };
 
+export function updateContentRightType(type) {
+  return {
+    type: C.UPDATE_CONTENT_RIGHT_TYPE,
+    payload: type 
+  }
+};
+
+export function updateContentRightOpen(open) {
+  return {
+    type: C.UPDATE_CONTENT_RIGHT_OPEN,
+    payload: open 
+  }
+};
+
 export function getUser() {
 
   return function (dispatch) {
       
-      axios.get("/data/user.json")
-      .then(res => {
-          dispatch({ 
-            type: C.GET_USER, 
-            payload: res.data 
-          });
-        });
+    axios.get("/data/user.json")
+    .then(res => {
+      dispatch({ 
+        type: C.GET_USER, 
+        payload: res.data 
+      });
+    });
   }
   
+};
+
+export function getCustomers() {
+
+  return function (dispatch) {
+      
+    axios.get("/data/customers.json")
+    .then(res => {
+      dispatch({ 
+        type: C.GET_CUSTOMERS, 
+        payload: res.data 
+      });
+    });
+  }
 };
 
 

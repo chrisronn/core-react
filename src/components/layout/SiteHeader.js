@@ -1,16 +1,29 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
-
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { updateContentRightOpen, updateContentRightType } from "../../redux/actions/index";
 
 const SiteHeader = () => {
 
   const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  const openSearch = (e) => {
+    e.preventDefault();
+    dispatch(updateContentRightOpen(true));
+    dispatch(updateContentRightType("search"));
+  }
+
+  const openProfile = (e) => {
+    e.preventDefault();
+    dispatch(updateContentRightOpen(true));
+    dispatch(updateContentRightType("profile"));
+  }
 
   return (
 
     <header id="siteHeader" className="main-header fixed-top">
-
+      
       <a href="/" className="brand-link">
       <span>&nbsp;</span>
       </a>
@@ -27,10 +40,10 @@ const SiteHeader = () => {
             <span className="nav-header">CRM</span>
             </li>
             <li className="nav-item">
-              <a href="/" className="nav-link">Kunder</a>
+              <Link to="/customer/list" className="nav-link">Kunder</Link>
             </li>
             <li className="nav-item">
-              <a href="/" className="nav-link">Ny kund</a>
+              <Link to="/customer/create" className="nav-link">Ny kund</Link>
             </li>
           </ul>
         </div>   
@@ -39,12 +52,12 @@ const SiteHeader = () => {
           <li className="nav-item">
           </li>
           <li className="nav-item">
-            <a className="nav-link" id="navsearch" href="/">
+            <a className="nav-link" id="navsearch" href="/" onClick={openSearch}>
               <i className="fas fa-search"></i>
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" id="navprofile" href="/">
+            <a className="nav-link" id="navprofile" href="/" onClick={openProfile}>
               <i className="fas fa-user-circle"></i><span className="nav-link-text ml-2">{user.firstname} {user.lastname}</span>
             </a>
           </li>

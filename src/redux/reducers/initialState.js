@@ -4,7 +4,9 @@ const initialState = {
     user: {},
     contentHeight: "",
     sidebarHeight: "",
-    sidebarClass: "noSideMenu"
+    sidebarClass: "noSideMenu",
+    contentRightType: "",
+    contentRightOpen: false,
 
 };
 

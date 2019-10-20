@@ -4,12 +4,6 @@ import initialState from "../reducers/initialState";
 
 const rootReducer = (state = initialState, action) => {
 
-    if (action.type === C.GET_CUSTOMERS) {
-        return Object.assign({}, state, {
-            customers: state.customers.concat(action.payload)
-        });
-    }
-
     if (action.type === C.UPDATE_CONTENT_HEIGHT) {
         return {
             ...state,
@@ -31,11 +25,31 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.UPDATE_CONTENT_RIGHT_TYPE) {
+        return {
+            ...state,
+            contentRightType: action.payload
+        };
+    }
+
+    if (action.type === C.UPDATE_CONTENT_RIGHT_OPEN) {
+        return {
+            ...state,
+            contentRightOpen: action.payload
+        };
+    }
+
     if (action.type === C.GET_USER) {
         return {
             ...state,
             user: action.payload
         };
+    }
+
+    if (action.type === C.GET_CUSTOMERS) {
+        return Object.assign({}, state, {
+            customers: state.customers.concat(action.payload)
+        });
     }
 
     return state;

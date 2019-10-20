@@ -11,13 +11,16 @@ const SiteLayout = () => {
 
   const contentHeight = useSelector(state => state.contentHeight);
   const sidebarClass = useSelector(state => state.sidebarClass);
+  const contentRightOpen = useSelector(state => state.contentRightOpen);
   
   let contentStyle = {
     minHeight: contentHeight + "px"
   };
+
+  let contentRightClass = contentRightOpen ? 'control-sidebar-slide-open' : '';
   
   return (
-    <div class={sidebarClass}>
+    <div class={sidebarClass + " " +contentRightClass}>
       <div className="wrapper">
 
         <SiteHeader />

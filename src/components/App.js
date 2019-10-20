@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { BrowserRouter as Router} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUser, updateContentHeight, updateSidebarHeight } from "../redux/actions/index";
 
@@ -26,9 +26,11 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <SiteLayout />
-    </div>
+    <Router>
+      <div>
+        <SiteLayout />
+      </div>
+    </Router>
   );
   
 }
