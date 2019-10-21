@@ -13,6 +13,8 @@ import 'jquery/dist/jquery.js';
 import 'popper.js/dist/umd/popper.js';
 import 'bootstrap/dist/js/bootstrap.js';
 
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css"
+
 import './assets/css/layout.css'
 import './assets/css/skin.css'
 import './assets/css/custom.css'

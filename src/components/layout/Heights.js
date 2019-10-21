@@ -11,10 +11,8 @@ const layoutHeight = (type) => {
     const sidebarHeight = max - siteHeaderHeight - offset;
       
     if (type === "content") {
-        console.log("contentHeight: " + contentHeight); 
         return contentHeight;
     } else if (type === "sidebar") {
-        console.log("sidebarHeight: " + sidebarHeight);
         return sidebarHeight;
     }  
 };

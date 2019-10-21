@@ -20,7 +20,7 @@ const SiteLayout = () => {
   let contentRightClass = contentRightOpen ? 'control-sidebar-slide-open' : '';
   
   return (
-    <div class={sidebarClass + " " +contentRightClass}>
+    <div className={sidebarClass + " " +contentRightClass}>
       <div className="wrapper">
 
         <SiteHeader />
