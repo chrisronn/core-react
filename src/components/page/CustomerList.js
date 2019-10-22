@@ -14,8 +14,9 @@ const CustomerList = () => {
     }, [dispatch]);
 
     const colFormatter = (cell, row) => {
+        let id = row.id;
         return (
-          <Link to='/some/route'>
+          <Link to={'/customer/'+id}>
             {cell}
           </Link>
         )

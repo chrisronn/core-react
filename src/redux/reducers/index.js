@@ -47,9 +47,10 @@ const rootReducer = (state = initialState, action) => {
     }
 
     if (action.type === C.GET_CUSTOMERS) {
-        return Object.assign({}, state, {
-            customers: state.customers.concat(action.payload)
-        });
+        return {
+            ...state,
+            customers: action.payload
+        };
     }
 
     return state;
