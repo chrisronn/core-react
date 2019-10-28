@@ -53,6 +53,15 @@ export function getUser() {
   
 };
 
+export function getCustomer(id) {
+
+  return {
+    type: C.GET_CUSTOMER,
+    payload: id
+  }
+  
+};
+
 export function getCustomers() {
 
   return function (dispatch) {
