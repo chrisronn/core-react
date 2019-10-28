@@ -55,11 +55,21 @@ export function getUser() {
 
 export function getCustomer(id) {
 
-  return {
-    type: C.GET_CUSTOMER,
-    payload: id
-  }
-  
+  return function (dispatch) {
+        
+    axios.get("/data/customers.json")
+    .then(res => {
+      if(res.data.length > 0) {
+        var cust = res.data.find(function (el) {
+            return el.id===id;
+        });
+        dispatch({ 
+          type: C.GET_CUSTOMER, 
+          payload: cust
+        });
+      }
+    });
+  }  
 };
 
 export function getCustomers() {

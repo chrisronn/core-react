@@ -1,6 +1,12 @@
 import React from 'react';
 
+import { useDispatch} from "react-redux";
+import { updateSidebarClass } from "../../redux/actions/index";
+
 const CustomerCreate = () => {
+
+    const dispatch = useDispatch();
+    dispatch(updateSidebarClass("noSideMenu"));
 
     return (
         <section className="content">

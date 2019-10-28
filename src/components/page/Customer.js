@@ -1,13 +1,22 @@
 import React from 'react';
 import { useParams } from "react-router";
 import { Route, Switch, Link } from "react-router-dom";
-
+import { updateSidebarClass, getCustomer } from "../../redux/actions/index";
+import { useSelector, useDispatch } from "react-redux";
 import ContentLeft from "../layout/ContentLeft";
 import CustomerCard from "../page/CustomerCard";
 
 const Customer = () => {
 
+    const customer = useSelector(state => state.customer);
     let { id } = useParams();
+
+    const dispatch = useDispatch();
+    dispatch(updateSidebarClass("hold-transition sidebar-mini sidebar-collapse"));
+
+    if(!customer.id || (customer.id && (id !== customer.id))) { 
+        dispatch(getCustomer(id));
+    };
 
     return (
         <div>
@@ -21,18 +30,18 @@ const Customer = () => {
           </button>
     
             <div className="top-name">
-                    <Link to={'/customer/' + id}>{id}</Link>
+                    <Link to={'/customer/' + id}>{customer.name}</Link>
             </div>			
         
         </div>
     
-        <section class="content">
+        <section className="content">
     
-          <div class="container-fluid">
+          <div className="container-fluid">
     
           <Switch>
             <Route path="/customer/:id" component={CustomerCard} />
-        </Switch>              
+          </Switch>              
     
           </div>
         </section>

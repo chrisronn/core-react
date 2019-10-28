@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch,  useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCustomers } from "../../redux/actions/index";
+import { getCustomers, updateSidebarClass } from "../../redux/actions/index";
 import BootstrapTable from 'react-bootstrap-table-next';
 
 const CustomerList = () => {
 
     const customers = useSelector(state => state.customers);
     const dispatch = useDispatch();
+
+    dispatch(updateSidebarClass("noSideMenu"));
 
     useEffect(() => {      
         dispatch(getCustomers());            
