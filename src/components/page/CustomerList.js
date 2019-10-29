@@ -11,7 +11,7 @@ const CustomerList = () => {
 
     dispatch(updateSidebarClass("noSideMenu"));
 
-    useEffect(() => {      
+    useEffect(() => {
         dispatch(getCustomers());            
     }, [dispatch]);
 

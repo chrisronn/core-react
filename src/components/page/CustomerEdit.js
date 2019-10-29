@@ -5,7 +5,11 @@ import useCustomerForm from '../forms/CustomerForm';
 const CustomerEdit = () => {
 
   const update = () => {
-    alert(`Name: ${customer.name}`);
+    alert(
+      `Name: ${customer.name},
+       Address: ${customer.address}, 
+       Zip: ${customer.zipcode}, 
+       City: ${customer.city}`);
   }
 
     //custom hook
