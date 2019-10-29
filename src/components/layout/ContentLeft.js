@@ -19,7 +19,7 @@ const ContentLeft = () => {
           <ul className="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false">
               
             <li className="nav-item">
-              <NavLink to={'/customer/' + customer.id} activeClassName="active" className="nav-link">
+              <NavLink to={'/customer/' + customer.id + '/card'} activeClassName="active" className="nav-link">
                 <i className="nav-icon fas fa-th"></i>
                 <p>Kundkort</p>
               </NavLink>

@@ -7,7 +7,7 @@ import ContentLeft from "../layout/ContentLeft";
 import CustomerCard from "../page/CustomerCard";
 import CustomerEdit from "../page/CustomerEdit";
 
-const Customer = () => {
+const Customer = ({ match }) => {
 
     const customer = useSelector(state => state.customer);
     let { id } = useParams();
@@ -31,7 +31,7 @@ const Customer = () => {
           </button>
     
             <div className="top-name">
-                    <Link to={'/customer/' + id}>{customer.name}</Link>
+                    <Link to={'/customer/' + id + '/card'}>{customer.name}</Link>
             </div>			
         
         </div>
@@ -41,8 +41,9 @@ const Customer = () => {
           <div className="container-fluid">
     
           <Switch>
+              <Route path={match.url + '/edit'} component={CustomerEdit}/>
+              <Route path={match.url + '/card'} component={CustomerCard}/>
               <Route path="/customer/:id" component={CustomerCard} />
-              <Route path="/customer/:id/edit" component={CustomerEdit} />
           </Switch>              
     
           </div>

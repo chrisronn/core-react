@@ -60,6 +60,13 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.EDIT_CUSTOMER) {
+        return {
+            ...state,
+            customer: action.payload
+        };
+    }
+
     return state;
 };
 

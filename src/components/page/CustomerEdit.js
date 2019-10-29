@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { useSelector } from "react-redux";
+import useCustomerForm from '../forms/CustomerForm';
 
 const CustomerEdit = () => {
 
-    const customer = useSelector(state => state.customer);
-  
+  const update = () => {
+    alert(`Name: ${customer.name}`);
+  }
+
+    //custom hook
+    const {customer, handleInputChange, handleSubmit} = useCustomerForm(update);
+
     return (
         <div>
     
@@ -13,7 +18,7 @@ const CustomerEdit = () => {
     
         <div className="card card-primary card-outline">
     
-          <form name="form">
+          <form name="form" onSubmit={handleSubmit}>
     
             <div className="card-header clearfix">
               <div className="float-left mb-1 mb-sm-0">
@@ -39,28 +44,28 @@ const CustomerEdit = () => {
                   <div className="form-group row">
                     <label className="col-sm-5 col-md-4 col-lg-3 col-form-label">Kundnamn:<span className="required-icon">*</span></label>
                     <div className="col-sm-7 col-md-8 col-lg-9">
-                      <input type="text" name="name" className="form-control" required/>
+                      <input type="text" name="name" className="form-control" value={customer.name || ''} onChange={handleInputChange} required/>
                     </div>
                   </div>
     
                   <div className="form-group row">
                     <label className="col-sm-5 col-md-4 col-lg-3 col-form-label">Adress:</label>
                     <div className="col-sm-7 col-md-8 col-lg-9">
-                      <input type="text" name="address" className="form-control"/>
+                      <input type="text" name="address" className="form-control" value={customer.address || ''} onChange={handleInputChange}/>
                     </div>
                   </div>
     
                   <div className="form-group row">
                     <label className="col-sm-5 col-md-4 col-lg-3 col-form-label">Postnr:</label>
                     <div className="col-sm-7 col-md-8 col-lg-9">
-                      <input type="text" name="zipcode" className="form-control"/>
+                      <input type="text" name="zipcode" className="form-control" value={customer.zipcode || ''} onChange={handleInputChange}/>
                     </div>
                   </div>
     
                   <div className="form-group row">
                     <label className="col-sm-5 col-md-4 col-lg-3 col-form-label">Ort:<span className="required-icon">*</span></label>
                     <div className="col-sm-7 col-md-8 col-lg-9">
-                      <input type="text" name="city" className="form-control" required/>
+                      <input type="text" name="city" className="form-control" value={customer.city || ''} onChange={handleInputChange} required/>
                     </div>
                   </div>
                 

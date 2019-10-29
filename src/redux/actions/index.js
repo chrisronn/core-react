@@ -86,6 +86,14 @@ export function getCustomers() {
   }
 };
 
+export function editCustomer(customer) {
+  // TODO:
+  return {
+    type: C.EDIT_CUSTOMER,
+    payload: customer 
+  }
+};
+
 
 
 
