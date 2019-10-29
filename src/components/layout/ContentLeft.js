@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const ContentLeft = () => {
 
+  const customer = useSelector(state => state.customer);
   const sidebarHeight = useSelector(state => state.sidebarHeight);
 
   let sidebarStyle = {
@@ -17,24 +19,24 @@ const ContentLeft = () => {
           <ul className="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false">
               
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <NavLink to={'/customer/' + customer.id} activeClassName="active" className="nav-link">
                 <i className="nav-icon fas fa-th"></i>
                 <p>Kundkort</p>
-              </a>
+              </NavLink>
             </li>
                 
             <li className="nav-item">
-              <a href="/" className="nav-link">
-                <i className="nav-icon fas fa-info-circle"></i>
-                <p>Information</p>
-              </a>
+              <NavLink to={'/customer/' + customer.id + '/edit'} activeClassName="active" className="nav-link">
+                  <i className="nav-icon fas fa-info-circle"></i>
+                  <p>Information</p>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <NavLink to={'/customer/' + customer.id + '/contacts'} activeClassName="active" className="nav-link">
                 <i className="nav-icon fas fa-user"></i>
                 <p>Kontakter</p>
-              </a>
+              </NavLink>
             </li>
               
           </ul>

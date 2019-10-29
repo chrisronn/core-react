@@ -5,6 +5,7 @@ import { updateSidebarClass, getCustomer } from "../../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import ContentLeft from "../layout/ContentLeft";
 import CustomerCard from "../page/CustomerCard";
+import CustomerEdit from "../page/CustomerEdit";
 
 const Customer = () => {
 
@@ -40,7 +41,8 @@ const Customer = () => {
           <div className="container-fluid">
     
           <Switch>
-            <Route path="/customer/:id" component={CustomerCard} />
+              <Route path="/customer/:id" component={CustomerCard} />
+              <Route path="/customer/:id/edit" component={CustomerEdit} />
           </Switch>              
     
           </div>
