@@ -14,7 +14,8 @@ const CustomerEdit = () => {
 
     //custom hook
     const {customer, handleInputChange, handleSubmit} = useCustomerForm(update);
-
+    //const {inputs, handleInputChange, handleSubmit} = useCustomerForm(update);
+  
     return (
         <div>
     
