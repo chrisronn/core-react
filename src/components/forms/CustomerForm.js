@@ -1,30 +1,29 @@
 
-import { useSelector, useDispatch } from "react-redux";
-import { editCustomer } from "../../redux/actions/index";
+import { useSelector } from "react-redux";
+import {useState} from 'react';
 
 const useCustomerForm = (callback) => {
 
-    const customer = useSelector(state => state.customer);
-    const dispatch = useDispatch();
+  const customer = useSelector(state => state.customer);
+  
+  const [inputs, setInputs] = useState(customer);
 
-    const handleSubmit = (event) => {
-        if (event) {
-          event.preventDefault();
-        }
-        callback();
+  const handleSubmit = (event) => {
+    if (event) {
+      event.preventDefault();
     }
+    callback();
+  }
 
-    const handleInputChange = (event) => {
-        event.persist();
-        dispatch(editCustomer({...customer, [event.target.name]: event.target.value}));
-        //setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-    }
-
-    return {
-        handleSubmit,
-        handleInputChange,
-        customer
-      };
+  const handleInputChange = (event) => {
+    event.persist();
+    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+  }
+  return {
+    handleSubmit,
+    handleInputChange,
+    inputs
+  };
 }
 
 export default useCustomerForm;
