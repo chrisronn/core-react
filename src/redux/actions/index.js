@@ -87,10 +87,36 @@ export function getCustomers() {
 };
 
 export function editCustomer(customer) {
-  // TODO:
+
+  // TODO: this logic is for dev only. Add API-calls
   return {
     type: C.EDIT_CUSTOMER,
     payload: customer 
+  }
+};
+
+export function createCustomer(inputs) {
+  
+  // TODO: this logic is for dev only. Add API-calls
+  let cust = {};
+  let custId = (Math.floor(Math.random() * 10000) + 2000).toString();
+  cust.id = custId.toString();
+  cust.name = inputs.name;
+  cust.address = inputs.address;
+  cust.zipcode = inputs.zipcode;
+  cust.city = inputs.city;
+
+  let cont = {};
+  cont.custid = custId;
+  cont.firstname = inputs.firstname;
+  cont.lastname = inputs.lastname;
+  cont.phone = inputs.phone;
+  cont.mobilephone = inputs.mobilephone;
+  cont.email = inputs.email;
+
+  return {
+    type: C.CREATE_CUSTOMER,
+    payload: cust 
   }
 };
 

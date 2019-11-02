@@ -67,6 +67,13 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.CREATE_CUSTOMER) {
+        return {
+            ...state,
+            customer: action.payload
+        };
+    }
+
     return state;
 };
 

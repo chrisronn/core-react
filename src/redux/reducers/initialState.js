@@ -1,7 +1,9 @@
 
 const initialState = {
     customer: {},
+    contact: {},
     customers: [],
+    contacts: [],
     user: {},
     contentHeight: "",
     sidebarHeight: "",
