@@ -1,6 +1,6 @@
 
 import C from "../actions/constants";
-
+import _ from 'lodash';
 import axios from 'axios';
 
 export function updateContentHeight(height) {
@@ -120,6 +120,50 @@ export function createCustomer(inputs) {
   }
 };
 
+export function getContacts(custId) {
+
+  // TODO: this logic is for dev only. Add API-calls
+  return function (dispatch) {
+      
+    axios.get("/data/contacts.json")
+      .then(res => {
+        let conts = _.filter(res.data, { 'custid': custId });
+        dispatch({ 
+          type: C.GET_CONTACTS, 
+          payload: conts 
+        });
+    });
+  }
+};
+
+export function editContact(contact) {
+
+  // TODO: this logic is for dev only. Add API-calls
+  return {
+    type: C.EDIT_CONTACT,
+    payload: contact
+  }
+};
+
+export function getContact(id) {
+
+  // TODO: this logic is for dev only. Add API-calls
+  return function (dispatch) {
+        
+    axios.get("/data/contacts.json")
+    .then(res => {
+      if(res.data.length > 0) {
+        var cont = res.data.find(function (el) {
+            return el.id===id;
+        });
+        dispatch({ 
+          type: C.GET_CONTACT, 
+          payload: cont
+        });
+      }
+    });
+  }  
+};
 
 
 

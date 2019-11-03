@@ -1,28 +1,27 @@
 
-import { useSelector } from "react-redux";
-import {useState} from 'react';
+import { useState } from 'react';
 
-const useContactForm = (callback) => {
+const useContactForm = (callback,contact) => {
+    
+  const [inputs, setInputs] = useState(contact);
 
-  const contact = useSelector(state => state.contact);
-  
-  const [inputsContact, setInputsContact] = useState(contact);
+  console.log("contactID in form: " + contact.id);
 
-  const handleSubmitContact = (event) => {
+  const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
     }
     callback();
   }
 
-  const handleInputChangeContact = (event) => {
+  const handleInputChange = (event) => {
     event.persist();
-    setInputsContact(inputsContact => ({...inputsContact, [event.target.name]: event.target.value}));
+    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
   }
   return {
-    handleSubmitContact,
-    handleInputChangeContact,
-    inputsContact
+    handleSubmit,
+    handleInputChange,
+    inputs
   };
 }
 

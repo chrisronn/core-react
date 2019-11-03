@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getContacts } from "../../redux/actions/index";
 
 const CustomerCard = () => {
 
     const customer = useSelector(state => state.customer);
+    const contacts = useSelector(state => state.contacts);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getContacts(customer.id));            
+    }, [dispatch, customer.id]);
   
     return (
         <div>
@@ -83,7 +90,18 @@ const CustomerCard = () => {
             </div>
           </div>
           <div className="card-body no-padding" style={{display: 'block'}}>
-            
+            <table className="table">
+              <tbody>                    
+                {contacts.map(function(contact, index){
+                  return (            
+                    <tr key={ index }>
+                      <td className="cell-icon"><i className="far fa-user"></i></td>
+                      <td><Link to={'/customer/' + contact.custid + '/contact/'+contact.id} className='ml-2'>{contact.fullname}</Link></td>
+                    </tr>
+                  )
+                })}     
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

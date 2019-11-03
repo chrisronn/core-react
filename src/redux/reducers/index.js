@@ -74,6 +74,27 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.GET_CONTACTS) {
+        return {
+            ...state,
+            contacts: action.payload
+        };
+    }
+
+    if (action.type === C.EDIT_CONTACT) {
+        return {
+            ...state,
+            contact: action.payload
+        };
+    }
+
+    if (action.type === C.GET_CONTACT) {
+        return {
+            ...state,
+            contact: action.payload
+        };
+    }
+
     return state;
 };
 
