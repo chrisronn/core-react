@@ -7,20 +7,19 @@ import ContentLeft from "../layout/ContentLeft";
 import CustomerCard from "../page/CustomerCard";
 import CustomerEdit from "../page/CustomerEdit";
 import CustomerContactList from "../page/CustomerContactList";
-import CustomerContact from "../page/CustomerContact";
+import Contact from "../page/Contact";
 
 const Customer = ({ match }) => {
 
-  const customer = useSelector(state => state.customer);
-    let { id} = useParams();
+    const customer = useSelector(state => state.customer);
+    let { id } = useParams();
 
     const dispatch = useDispatch();
     dispatch(updateSidebarClass("hold-transition sidebar-mini sidebar-collapse"));
 
     if(!customer.id || (customer.id && (id !== customer.id))) { 
         dispatch(getCustomer(id));
-    };
-  
+    };  
 
     return (
         <div>
@@ -47,7 +46,7 @@ const Customer = ({ match }) => {
               <Route path={match.url + '/contacts'} component={CustomerContactList}/>
               <Route path={match.url + '/edit'} component={CustomerEdit}/>
               <Route path={match.url + '/card'} component={CustomerCard} />
-              <Route path="/customer/:id/contact/:contid" component={CustomerContact} />
+              <Route path={match.url + '/contact/:contid'} component={Contact} />
               <Route path="/customer/:id" component={CustomerCard} />
           </Switch>              
     

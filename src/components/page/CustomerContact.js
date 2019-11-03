@@ -1,24 +1,18 @@
 import React from 'react';
-import { useDispatch,useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
 import useContactForm from '../hooks/ContactForm';
-import { editContact,getContact } from "../../redux/actions/index";
+import { editContact } from "../../redux/actions/index";
 
 const CustomerContact = () => {
 
-    let { contid } = useParams();
     const dispatch = useDispatch();
 
-    dispatch(getContact(contid));
-
-    const contact = useSelector(state => state.contact);
-    
     const update = () => {    
-        dispatch(editContact(inputs));
+      dispatch(editContact(inputs));
     }
-  
+    
     //custom hook
-    const { inputs, handleInputChange, handleSubmit } = useContactForm(update, contact);
+    const {inputs, handleInputChange, handleSubmit} = useContactForm(update);
     
   return (
       <div>

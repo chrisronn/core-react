@@ -1,8 +1,11 @@
 
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 
-const useContactForm = (callback,contact) => {
+const useContactForm = (callback) => {
     
+  const contact = useSelector(state => state.contact);
+
   const [inputs, setInputs] = useState(contact);
 
   console.log("contactID in form: " + contact.id);
