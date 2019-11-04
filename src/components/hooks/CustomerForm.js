@@ -1,12 +1,12 @@
 
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import {useState} from 'react';
 
-const useCustomerForm = (callback) => {
+const useCustomerForm = (callback, initial) => {
 
-  const customer = useSelector(state => state.customer);
+  //const customer = useSelector(state => state.customer);
   
-  const [inputs, setInputs] = useState(customer);
+  const [inputs, setInputs] = useState(initial);
 
   const handleSubmit = (event) => {
     if (event) {

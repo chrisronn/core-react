@@ -1,18 +1,20 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
-import useCustomerForm from '../hooks/CustomerForm';
+import { useDispatch,useSelector } from "react-redux";
+import useGenericForm from '../hooks/GenericForm';
 import { editCustomer } from "../../redux/actions/index";
 
 const CustomerEdit = () => {
 
   const dispatch = useDispatch();
 
+  const customer = useSelector(state => state.customer);
+
   const update = () => {    
     dispatch(editCustomer(inputs));
   }
   
   //custom hook
-  const {inputs, handleInputChange, handleSubmit} = useCustomerForm(update);
+  const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,customer);
 
   return (
       <div>

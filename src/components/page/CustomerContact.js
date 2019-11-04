@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import useContactForm from '../hooks/ContactForm';
+import useGenericForm from '../hooks/GenericForm';
 import { editContact } from "../../redux/actions/index";
 
 const CustomerContact = () => {
@@ -12,7 +12,7 @@ const CustomerContact = () => {
     }
     
     //custom hook
-    const {inputs, handleInputChange, handleSubmit} = useContactForm(update);
+    const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,{});
     
   return (
       <div>

@@ -9,11 +9,23 @@ const CustomerCreate = () => {
     const dispatch = useDispatch();
     dispatch(updateSidebarClass("noSideMenu"));
 
+    const initialState = {
+        "name": "",
+        "address": "",
+        "zipcode": "",
+        "city": "",
+        "firstname": "",
+        "lastname": "",
+        "phone": "",
+        "mobilephone": "",
+        "email": ""
+    }
+
     const create = () => {    
         dispatch(createCustomer(inputs));
     }
     
-    const { inputs, handleInputChange, handleSubmit } = useGenericForm(create);
+    const { inputs, handleInputChange, handleSubmit } = useGenericForm(create,initialState);
 
     return (
         <section className="content">

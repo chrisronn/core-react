@@ -48,7 +48,7 @@ const Customer = ({ match }) => {
               <Route path={match.url + '/card'} component={CustomerCard} />
               <Route path={match.url + '/contact/:contid'} component={Contact} />
               <Route path="/customer/:id" component={CustomerCard} />
-          </Switch>              
+            </Switch>              
     
           </div>
         </section>

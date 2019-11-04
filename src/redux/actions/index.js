@@ -120,6 +120,24 @@ export function createCustomer(inputs) {
   }
 };
 
+export function resetCustomer() {
+  
+  let cust = {
+    "id": "",
+    "name": "",
+    "address": "",
+    "zipcode": "",
+    "city": ""
+  }
+
+  return {
+    type: C.RESET_CUSTOMER,
+    payload: cust 
+  }
+};
+
+
+
 export function getContacts(custId) {
 
   // TODO: this logic is for dev only. Add API-calls

@@ -96,7 +96,7 @@ const CustomerCard = () => {
                   return (            
                     <tr key={ index }>
                       <td className="cell-icon"><i className="far fa-user"></i></td>
-                      <td><Link to={'/customer/' + contact.custid + '/contact/'+contact.id} className='ml-2'>{contact.fullname}</Link></td>
+                      <td><Link to={'/customer/' + contact.custid + '/contact/'+contact.id+'/edit'} className='ml-2'>{contact.fullname}</Link></td>
                     </tr>
                   )
                 })}     

@@ -1,11 +1,11 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useParams } from "react-router";
 import { Route, Switch } from "react-router-dom";
 import { getContact } from "../../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import CustomerContact from "../page/CustomerContact";
 
-const Contact = () => {
+const Contact = ({ match }) => {
     
     let { contid } = useParams();
 
@@ -14,16 +14,16 @@ const Contact = () => {
 
     const contact = useSelector(state => state.contact);
 
-    if (!contact.id) {
-        console.log("so dispatch...")
-        dispatch(getContact(contid));
-    }
+    useEffect(() => {
+        dispatch(getContact(contid));            
+    }, [dispatch,contid]);
 
     console.log("contact: " + contact.fullname);
+    
     return (
     
           <Switch>
-              <Route path={'/customer/:id/contact/:contid'} component={CustomerContact}/>
+              <Route path={match.url + '/edit'} component={CustomerContact}/>
           </Switch>
 
     );

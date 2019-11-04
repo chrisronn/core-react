@@ -1,9 +1,9 @@
 
 import {useState} from 'react';
 
-const useGenericForm = (callback) => {
+const useGenericForm = (callback,initialState) => {
 
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState(initialState);
 
     const handleSubmit = (event) => {
       if (event) {
