@@ -169,19 +169,29 @@ export function getContact(id) {
   return function (dispatch) {
         
     axios.get("/data/contacts.json")
-    .then(res => {
-      if(res.data.length > 0) {
-        var cont = res.data.find(function (el) {
-            return el.id===id;
-        });
-        dispatch({ 
-          type: C.GET_CONTACT, 
-          payload: cont
-        });
-      }
-    });
-  }  
+      .then(res => {
+        if (res.data.length > 0) {
+          var cont = res.data.find(function (el) {
+            return el.id === id;
+          });
+          dispatch({
+            type: C.GET_CONTACT,
+            payload: cont
+          });
+        }
+      });
+  }
 };
+
+export function createContact(inputs) {
+  
+  // TODO: this logic is for dev only. Add API-calls
+  return {
+    type: C.CREATE_CONTACT,
+    payload: inputs
+  }
+};
+
 
 
 

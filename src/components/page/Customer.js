@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ContentLeft from "../layout/ContentLeft";
 import CustomerCard from "../page/CustomerCard";
 import CustomerEdit from "../page/CustomerEdit";
+import CustomerContactCreate from "../page/CustomerContactCreate";
 import CustomerContactList from "../page/CustomerContactList";
 import Contact from "../page/Contact";
 
@@ -46,8 +47,9 @@ const Customer = ({ match }) => {
               <Route path={match.url + '/contacts'} component={CustomerContactList}/>
               <Route path={match.url + '/edit'} component={CustomerEdit}/>
               <Route path={match.url + '/card'} component={CustomerCard} />
+              <Route path={match.url + '/contact/create'} component={CustomerContactCreate} />
               <Route path={match.url + '/contact/:contid'} component={Contact} />
-              <Route path="/customer/:id" component={CustomerCard} />
+              <Route path={match.url} component={CustomerCard} />
             </Switch>              
     
           </div>

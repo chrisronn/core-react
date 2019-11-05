@@ -1,10 +1,14 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useGenericForm from '../hooks/GenericForm';
 import { editContact } from "../../redux/actions/index";
 
-const CustomerContact = () => {
+const ContactEdit = () => {
 
+    const contact = useSelector(state => state.contact);
+  
+    console.log(contact.id)
+  
     const dispatch = useDispatch();
 
     const update = () => {    
@@ -12,7 +16,7 @@ const CustomerContact = () => {
     }
     
     //custom hook
-    const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,{});
+    const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,contact);
     
   return (
       <div>
@@ -89,4 +93,4 @@ const CustomerContact = () => {
   );
 };
 
-export default CustomerContact;
+export default ContactEdit;

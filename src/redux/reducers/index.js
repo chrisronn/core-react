@@ -102,6 +102,13 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.CREATE_CONTACT) {
+        return {
+            ...state,
+            contact: action.payload
+        };
+    }
+
     return state;
 };
 
