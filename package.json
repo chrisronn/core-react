@@ -23,6 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "/dev/corereact.nsf/",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -3,25 +3,6 @@ import C from "../actions/constants";
 import _ from 'lodash';
 import axios from 'axios';
 
-//const URL_ROOT="/dev/corereact.nsf/";
-//const URL_HOME="/dev/corereact.nsf/index.html";
-
-const URL_DATA_USER_GET="/dev/corereact.nsf/xsp/user/";
-
-//const URL_DATA_CUSTOMER_CREATE="/dev/corereact.nsf/xsp/customer/";
-const URL_DATA_CUSTOMER_READ="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CUSTOMER_READ_ONE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CUSTOMER_UPDATE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CUSTOMER_DELETE="/dev/corereact.nsf/xsp/customer/";
-
-//const URL_DATA_CONTACT_URL_CONTACT_KEY="/contact/";
-//const URL_DATA_CONTACT_CREATE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_READ="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_READ_ONE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_UPDATE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_DELETE="/dev/corereact.nsf/xsp/customer/";
-
-
 export function updateContentHeight(height) {
   return {
     type: C.UPDATE_CONTENT_HEIGHT,
@@ -61,7 +42,7 @@ export function getUser() {
 
   return function (dispatch) {
       
-    axios.get(URL_DATA_USER_GET)
+    axios.get("/data/user.json")
     .then(res => {
       dispatch({ 
         type: C.GET_USER, 
@@ -95,7 +76,7 @@ export function getCustomers() {
 
   return function (dispatch) {
       
-    axios.get(URL_DATA_CUSTOMER_READ)
+    axios.get("/data/customers.json")
     .then(res => {
       dispatch({ 
         type: C.GET_CUSTOMERS, 
@@ -188,29 +169,19 @@ export function getContact(id) {
   return function (dispatch) {
         
     axios.get("/data/contacts.json")
-      .then(res => {
-        if (res.data.length > 0) {
-          var cont = res.data.find(function (el) {
-            return el.id === id;
-          });
-          dispatch({
-            type: C.GET_CONTACT,
-            payload: cont
-          });
-        }
-      });
-  }
+    .then(res => {
+      if(res.data.length > 0) {
+        var cont = res.data.find(function (el) {
+            return el.id===id;
+        });
+        dispatch({ 
+          type: C.GET_CONTACT, 
+          payload: cont
+        });
+      }
+    });
+  }  
 };
-
-export function createContact(inputs) {
-  
-  // TODO: this logic is for dev only. Add API-calls
-  return {
-    type: C.CREATE_CONTACT,
-    payload: inputs
-  }
-};
-
 
 
 
