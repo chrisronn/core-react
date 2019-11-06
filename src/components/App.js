@@ -26,7 +26,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Router>
+    <Router basename='/dev/corereact.nsf'>
       <div>
         <SiteLayout />
       </div>

@@ -12,11 +12,11 @@ const Content = () => (
 
   <div>
     <Switch>
-      <Route exact path="/" component={CustomerList} />
       <Route exact path="/start" component={CustomerList} />      
       <Route exact path="/customer/list" component={CustomerList} />
       <Route exact path="/customer/create" component={CustomerCreate} />
       <Route path="/customer/:id" component={Customer} />
+      <Route path="*" component={CustomerList} />
     </Switch>
       
   </div>

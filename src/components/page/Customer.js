@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from "react-router";
 import { Route, Switch, Link } from "react-router-dom";
 import { updateSidebarClass, getCustomer } from "../../redux/actions/index";
@@ -18,9 +18,13 @@ const Customer = ({ match }) => {
     const dispatch = useDispatch();
     dispatch(updateSidebarClass("hold-transition sidebar-mini sidebar-collapse"));
 
-    if(!customer.id || (customer.id && (id !== customer.id))) { 
-        dispatch(getCustomer(id));
-    };  
+    useEffect(() => {
+
+      console.log("custid before dispatching: " + customer.id);
+      if(!customer.id || (customer.id && (id !== customer.id))) { 
+          dispatch(getCustomer(id));
+      };  
+    }, [dispatch]);
 
     return (
         <div>

@@ -24,9 +24,9 @@ const SiteHeader = () => {
 
     <header id="siteHeader" className="main-header fixed-top">
       
-      <a href="/" className="brand-link">
+      <Link to="/" className="brand-link">
       <span>&nbsp;</span>
-      </a>
+      </Link>
             
       <nav className="navbar navbar-expand-sm">
               
