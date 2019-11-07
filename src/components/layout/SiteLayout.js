@@ -12,9 +12,14 @@ const SiteLayout = () => {
   const contentHeight = useSelector(state => state.contentHeight);
   const sidebarClass = useSelector(state => state.sidebarClass);
   const contentRightOpen = useSelector(state => state.contentRightOpen);
+  const loader = useSelector(state => state.loader);
   
   let contentStyle = {
     minHeight: contentHeight + "px"
+  };
+
+  let loaderStyle = {
+    display: loader ? "block" : "none"
   };
 
   let contentRightClass = contentRightOpen ? 'control-sidebar-slide-open' : '';
@@ -25,7 +30,7 @@ const SiteLayout = () => {
 
         <SiteHeader />
 
-      <div className="floating-message text-center icon-loader" style={{ display: 'none' }}><i className="fas fa-spinner fa-spin"></i></div>
+      <div className="floating-message text-center icon-loader" style={loaderStyle}><i className="fas fa-spinner fa-spin"></i></div>
 
       <div className="content-wrapper whatever" style={contentStyle}>      
             <SiteContent />

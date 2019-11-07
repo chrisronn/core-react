@@ -39,6 +39,13 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.UPDATE_LOADER) {
+        return {
+            ...state,
+            loader: action.payload
+        };
+    }
+
     if (action.type === C.GET_USER) {
         return {
             ...state,
@@ -56,7 +63,8 @@ const rootReducer = (state = initialState, action) => {
     if (action.type === C.GET_CUSTOMERS) {
         return {
             ...state,
-            customers: action.payload
+            customers: action.payload,
+            loader: false
         };
     }
 

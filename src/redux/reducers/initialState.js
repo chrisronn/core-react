@@ -10,6 +10,7 @@ const initialState = {
     sidebarClass: "noSideMenu",
     contentRightType: "",
     contentRightOpen: false,
+    loader: false,
 
 };
 

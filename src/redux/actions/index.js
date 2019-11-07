@@ -38,6 +38,13 @@ export function updateContentRightOpen(open) {
   }
 };
 
+export function updateLoader(status) {
+  return {
+    type: C.UPDATE_LOADER,
+    payload: status
+  }
+};
+
 export function getUser() {
 
   return function (dispatch) {
