@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateContentRightOpen, updateContentRightType } from "../../redux/actions/index";
+import urls from "../../urls";
 
 const SiteHeader = () => {
 
@@ -24,9 +25,9 @@ const SiteHeader = () => {
 
     <header id="siteHeader" className="main-header fixed-top">
       
-      <Link to="/" className="brand-link">
+      <a href={urls.URL_HOME} className="brand-link">
       <span>&nbsp;</span>
-      </Link>
+      </a>
             
       <nav className="navbar navbar-expand-sm">
               

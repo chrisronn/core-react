@@ -5,6 +5,7 @@ import { getUser, updateContentHeight, updateSidebarHeight } from "../redux/acti
 
 import layoutHeight from './layout/Heights';
 import SiteLayout from './layout/SiteLayout';
+import urls from "../urls";
 
 
 const App = () => {  
@@ -26,7 +27,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Router basename='/dev/corereact.nsf'>
+    <Router basename={urls.URL_ROOT}>
       <div>
         <SiteLayout />
       </div>

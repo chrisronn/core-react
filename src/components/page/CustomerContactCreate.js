@@ -2,9 +2,12 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import useGenericForm from '../hooks/GenericForm';
 import { createContact } from "../../redux/actions/index";
+import { useHistory } from "react-router-dom";
 
 const CustomerContactCreate = () => {
 
+    let history = useHistory();
+    
     const customer = useSelector(state => state.customer);
 
     const initialState = {
@@ -20,6 +23,7 @@ const CustomerContactCreate = () => {
 
     const create = () => {    
       dispatch(createContact(inputs));
+      history.push("/customer/" + customer.id + "/card");
     }
     
     //custom hook

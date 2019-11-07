@@ -5,9 +5,6 @@ import Customer from "../page/Customer";
 import CustomerList from "../page/CustomerList";
 import CustomerCreate from "../page/CustomerCreate";
 
-//import CustomerContactList from "../page/CustomerContactList";
-//import CustomerContact from "..page/CustomerContact";
-
 const Content = () => (
 
   <div>

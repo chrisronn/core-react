@@ -1,26 +1,7 @@
-
 import C from "../actions/constants";
-import _ from 'lodash';
+import urls from "../../urls";
+//import _ from 'lodash';
 import axios from 'axios';
-
-//const URL_ROOT="/dev/corereact.nsf/";
-//const URL_HOME="/dev/corereact.nsf/index.html";
-
-const URL_DATA_USER_GET="/dev/corereact.nsf/xsp/user/";
-
-const URL_DATA_CUSTOMER_CREATE="/dev/corereact.nsf/xsp/customer/";
-const URL_DATA_CUSTOMER_READ="/dev/corereact.nsf/xsp/customer/";
-const URL_DATA_CUSTOMER_READ_ONE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CUSTOMER_UPDATE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CUSTOMER_DELETE="/dev/corereact.nsf/xsp/customer/";
-
-const URL_DATA_CONTACT_CONTACT_KEY="/contact/";
-const URL_DATA_CONTACT_CREATE="/dev/corereact.nsf/xsp/customer/";
-const URL_DATA_CONTACT_READ="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_READ_ONE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_UPDATE="/dev/corereact.nsf/xsp/customer/";
-//const URL_DATA_CONTACT_DELETE="/dev/corereact.nsf/xsp/customer/";
-
 
 export function updateContentHeight(height) {
   return {
@@ -61,7 +42,7 @@ export function getUser() {
 
   return function (dispatch) {
       
-    axios.get(URL_DATA_USER_GET)
+    axios.get(urls.URL_DATA_USER_GET)
     .then(res => {
       dispatch({ 
         type: C.GET_USER, 
@@ -76,15 +57,12 @@ export function getCustomer(id) {
 
   return function (dispatch) {
         
-    let url = URL_DATA_CUSTOMER_READ_ONE + id;
+    let url = urls.URL_DATA_CUSTOMER_READ_ONE + id;
 
     axios.get(url)
       .then(res => {
-
-        console.log("got customer " + res.data.id);
-        
         dispatch({ 
-          type: C.GET_USER, 
+          type: C.GET_CUSTOMER, 
           payload: res.data 
         });
       })       
@@ -95,7 +73,7 @@ export function getCustomers() {
 
   return function (dispatch) {
       
-    axios.get(URL_DATA_CUSTOMER_READ)
+    axios.get(urls.URL_DATA_CUSTOMER_READ)
     .then(res => {
       dispatch({ 
         type: C.GET_CUSTOMERS, 
@@ -105,12 +83,27 @@ export function getCustomers() {
   }
 };
 
-export function editCustomer(customer) {
+export function editCustomer(cust) {
 
-  // TODO: this logic is for dev only. Add API-calls
-  return {
-    type: C.EDIT_CUSTOMER,
-    payload: customer 
+  var url = urls.URL_DATA_CUSTOMER_UPDATE + cust.id;
+
+  var params = new URLSearchParams();
+  params.append('_method', "PUT");
+  params.append('name', cust.name);
+  params.append('address', cust.address);
+  params.append('zipcode', cust.zipcode);
+  params.append('city', cust.city);
+
+  return function (dispatch) {
+      
+    axios.post(url,params)
+    .then(res => {
+      console.log("updated: " + res);
+      dispatch({ 
+        type: C.EDIT_CUSTOMER,
+        payload: cust 
+      });
+    });
   }
 };
 
@@ -131,7 +124,7 @@ export function createCustomer(inputs) {
 
   return function (dispatch) {
       
-    let url = URL_DATA_CUSTOMER_CREATE;
+    let url = urls.URL_DATA_CUSTOMER_CREATE;
 
     var params = new URLSearchParams();
     params.append('name', cust.name);
@@ -144,7 +137,7 @@ export function createCustomer(inputs) {
       .then(res => {
 
         cust.id = res.data.id;
-        url = URL_DATA_CONTACT_CREATE + res.data.id + URL_DATA_CONTACT_CONTACT_KEY;
+        url = urls.URL_DATA_CONTACT_CREATE + res.data.id + urls.URL_DATA_CONTACT_CONTACT_KEY;
 
         params = new URLSearchParams();
         params.append('firstname', cont.firstname);
@@ -190,7 +183,7 @@ export function getContacts(custId) {
 
   return function (dispatch) {
       
-    let url = URL_DATA_CONTACT_READ + custId + URL_DATA_CONTACT_CONTACT_KEY;
+    let url = urls.URL_DATA_CONTACT_READ + custId + urls.URL_DATA_CONTACT_CONTACT_KEY;
 
     axios.get(url)
     .then(res => {
@@ -202,38 +195,50 @@ export function getContacts(custId) {
   }
 };
 
-export function editContact(contact) {
+export function editContact(cont) {
 
-  // TODO: this logic is for dev only. Add API-calls
-  return {
-    type: C.EDIT_CONTACT,
-    payload: contact
+  var url = urls.URL_DATA_CONTACT_UPDATE + cont.custid + urls.URL_DATA_CONTACT_CONTACT_KEY + cont.id;
+
+  var params = new URLSearchParams();
+  params.append('_method', "PUT");
+  params.append('firstname', cont.firstname);
+  params.append('lastname', cont.lastname);
+  params.append('phone', cont.phone);
+  params.append('mobilephone', cont.mobilephone);
+  params.append('email', cont.email);
+
+  return function (dispatch) {
+      
+    axios.post(url,params)
+    .then(res => {
+      console.log("updated: " + res);
+      dispatch({ 
+        type: C.EDIT_CONTACT,
+        payload: cont 
+      });
+    });
   }
 };
 
-export function getContact(id) {
+export function getContact(custid,contid) {
 
-  // TODO: this logic is for dev only. Add API-calls
   return function (dispatch) {
         
-    axios.get("/data/contacts.json")
+    let url = urls.URL_DATA_CONTACT_READ_ONE + custid + urls.URL_DATA_CONTACT_CONTACT_KEY + contid;
+
+    axios.get(url)
       .then(res => {
-        if (res.data.length > 0) {
-          var cont = res.data.find(function (el) {
-            return el.id === id;
-          });
-          dispatch({
-            type: C.GET_CONTACT,
-            payload: cont
-          });
-        }
-      });
-  }
+        dispatch({ 
+          type: C.GET_CONTACT, 
+          payload: res.data 
+        });
+      })       
+  }  
 };
 
 export function createContact(cont) {
   
-  let url = URL_DATA_CONTACT_CREATE + cont.custid + URL_DATA_CONTACT_CONTACT_KEY;
+  let url = urls.URL_DATA_CONTACT_CREATE + cont.custid + urls.URL_DATA_CONTACT_CONTACT_KEY;
 
   var params = new URLSearchParams();
 
@@ -253,6 +258,48 @@ export function createContact(cont) {
         dispatch({ 
           type: C.CREATE_CONTACT, 
           payload: cont
+        });
+    });
+  }
+};
+
+export function deleteContact(cont) {
+  
+  let url = urls.URL_DATA_CONTACT_DELETE + cont.custid + urls.URL_DATA_CONTACT_CONTACT_KEY + cont.id;
+
+  var params = new URLSearchParams();
+  params.append('_method', "DELETE");
+
+  return function (dispatch) {
+      
+    axios.post(url,params)
+      .then(res => {
+
+        console.log("deleted: " + res);
+        
+        dispatch({ 
+          type: C.DELETE_CONTACT
+        });
+    });
+  }
+};
+
+export function deleteCustomer(cust) {
+  
+  let url = urls.URL_DATA_CUSTOMER_DELETE + cust.id;
+
+  var params = new URLSearchParams();
+  params.append('_method', "DELETE");
+
+  return function (dispatch) {
+      
+    axios.post(url,params)
+      .then(res => {
+
+        console.log("deleted: " + res);
+        
+        dispatch({ 
+          type: C.DELETE_CUSTOMER
         });
     });
   }

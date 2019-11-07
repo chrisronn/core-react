@@ -19,12 +19,10 @@ const Customer = ({ match }) => {
     dispatch(updateSidebarClass("hold-transition sidebar-mini sidebar-collapse"));
 
     useEffect(() => {
-
-      console.log("custid before dispatching: " + customer.id);
       if(!customer.id || (customer.id && (id !== customer.id))) { 
           dispatch(getCustomer(id));
       };  
-    }, [dispatch]);
+    }, [dispatch, customer.id, id]);
 
     return (
         <div>

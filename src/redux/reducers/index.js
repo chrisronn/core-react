@@ -109,6 +109,18 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
+    if (action.type === C.DELETE_CUSTOMER) {
+        return {
+            ...state
+        };
+    }
+
+    if (action.type === C.DELETE_CONTACT) {
+        return {
+            ...state
+        };
+    }
+
     return state;
 };
 

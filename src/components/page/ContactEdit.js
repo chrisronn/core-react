@@ -1,19 +1,26 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useGenericForm from '../hooks/GenericForm';
 import { editContact } from "../../redux/actions/index";
 
 const ContactEdit = () => {
 
-    const contact = useSelector(state => state.contact);
-  
-    console.log(contact.id)
-  
     const dispatch = useDispatch();
+    let history = useHistory();
 
+    const contact = useSelector(state => state.contact);
+    const customer = useSelector(state => state.customer);
+  
     const update = () => {    
       dispatch(editContact(inputs));
+      history.push("/customer/" + customer.id + "/card");
     }
+
+    //const remove = cont => {    
+    // dispatch(deleteContact(cont));
+    //  history.push("/customer/" + customer.id + "/card");
+    //}
     
     //custom hook
     const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,contact);

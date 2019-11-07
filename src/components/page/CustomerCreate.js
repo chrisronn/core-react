@@ -1,10 +1,12 @@
 import React from 'react';
-
+import { useHistory } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { updateSidebarClass, createCustomer } from "../../redux/actions/index";
 import useGenericForm from '../hooks/GenericForm';
 
 const CustomerCreate = () => {
+
+    let history = useHistory();
 
     const dispatch = useDispatch();
     dispatch(updateSidebarClass("noSideMenu"));
@@ -23,6 +25,7 @@ const CustomerCreate = () => {
 
     const create = () => {    
         dispatch(createCustomer(inputs));
+        history.push("/customer/list");
     }
     
     const { inputs, handleInputChange, handleSubmit } = useGenericForm(create,initialState);

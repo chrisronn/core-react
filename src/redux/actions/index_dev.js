@@ -163,9 +163,10 @@ export function editContact(contact) {
   }
 };
 
-export function getContact(id) {
+export function getContact(custid,id) {
 
   // TODO: this logic is for dev only. Add API-calls
+  custid = custid;
   return function (dispatch) {
         
     axios.get("/data/contacts.json")
