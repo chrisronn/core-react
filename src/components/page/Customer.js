@@ -24,40 +24,48 @@ const Customer = ({ match }) => {
       };  
     }, [dispatch, customer.id, id]);
 
-    return (
-        <div>
+    if(id === customer.id) {
+      
+      return (
+          <div>
 
-        <ContentLeft/>    
-    
-        <div className="cardpage-top border-bottom">
-    
-          <button className="btn btn-sm btn-default main-sidebar-toggler">
-            <i className="fas fa-ellipsis-h"></i>
-          </button>
-    
-            <div className="top-name">
-                    <Link to={'/customer/' + id + '/card'}>{customer.name}</Link>
-            </div>			
-        
-        </div>
-    
-        <section className="content">
-    
-          <div className="container-fluid">
-    
-            <Switch>
-              <Route path={match.url + '/contacts'} component={CustomerContactList}/>
-              <Route path={match.url + '/edit'} component={CustomerEdit}/>
-              <Route path={match.url + '/card'} component={CustomerCard} />
-              <Route path={match.url + '/contact/create'} component={CustomerContactCreate} />
-              <Route path={match.url + '/contact/:contid'} component={Contact} />
-              <Route path={match.url} component={CustomerCard} />
-            </Switch>              
-    
+          <ContentLeft/>    
+      
+          <div className="cardpage-top border-bottom">
+      
+            <button className="btn btn-sm btn-default main-sidebar-toggler">
+              <i className="fas fa-ellipsis-h"></i>
+            </button>
+      
+              <div className="top-name">
+                      <Link to={'/customer/' + id + '/card'}>{customer.name}</Link>
+              </div>			
+          
           </div>
-        </section>
-      </div>
-    );
+      
+          <section className="content">
+      
+            <div className="container-fluid">
+      
+              <Switch>
+                <Route path={match.url + '/contacts'} component={CustomerContactList}/>
+                <Route path={match.url + '/edit'} component={CustomerEdit}/>
+                <Route path={match.url + '/card'} component={CustomerCard} />
+                <Route path={match.url + '/contact/create'} component={CustomerContactCreate} />
+                <Route path={match.url + '/contact/:contid'} component={Contact} />
+                <Route path={match.url} component={CustomerCard} />
+              </Switch>              
+      
+            </div>
+          </section>
+        </div>
+      );
+
+    } else {
+
+      return ("");
+
+    }
 };
 
 export default Customer;

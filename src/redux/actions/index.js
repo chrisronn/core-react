@@ -278,7 +278,8 @@ export function deleteContact(cont) {
         console.log("deleted: " + res);
         
         dispatch({ 
-          type: C.DELETE_CONTACT
+          type: C.DELETE_CONTACT,
+          payload: cont.id
         });
     });
   }
@@ -299,7 +300,8 @@ export function deleteCustomer(cust) {
         console.log("deleted: " + res);
         
         dispatch({ 
-          type: C.DELETE_CUSTOMER
+          type: C.DELETE_CUSTOMER,
+          payload: cust.id
         });
     });
   }

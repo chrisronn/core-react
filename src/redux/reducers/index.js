@@ -70,7 +70,7 @@ const rootReducer = (state = initialState, action) => {
     if (action.type === C.CREATE_CUSTOMER) {
         return {
             ...state,
-            customer: action.payload
+            customers: state.customers.concat(action.payload)
         };
     }
 
@@ -105,19 +105,31 @@ const rootReducer = (state = initialState, action) => {
     if (action.type === C.CREATE_CONTACT) {
         return {
             ...state,
-            contact: action.payload
+            contacts: state.contacts.concat(action.payload)
         };
     }
 
     if (action.type === C.DELETE_CUSTOMER) {
+
+        let customerList = state.customers.filter(function (e) {
+            return e.id !== action.payload;
+        });
+
         return {
-            ...state
+            ...state,
+            customers: customerList
         };
     }
 
     if (action.type === C.DELETE_CONTACT) {
+
+        let contactList = state.contacts.filter(function (e) {
+            return e.id !== action.payload;
+        });
+
         return {
-            ...state
+            ...state,
+            contacts: contactList
         };
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useGenericForm from '../hooks/GenericForm';
-import { editCustomer} from "../../redux/actions/index";
+import { editCustomer, deleteCustomer } from "../../redux/actions/index";
 
 const CustomerEdit = () => {
 
@@ -16,10 +16,10 @@ const CustomerEdit = () => {
     history.push("/customer/" + customer.id + "/card");
   }
 
-  //const remove = cust => {    
-  //  dispatch(deleteCustomer(cust));
-  //  history.push("/customer/list");
-  //}
+  function doRemove() {    
+    dispatch(deleteCustomer(customer));
+    history.push("/customer/list");
+  }
   
   //custom hook
   const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,customer);
@@ -40,7 +40,7 @@ const CustomerEdit = () => {
               </button>
             </div>
             <div className="float-right mb-1 mb-sm-0">
-              <button type="button" className="btn btn-default ml-2" title="Ta bort">
+              <button type="button" className="btn btn-default ml-2" title="Ta bort" onClick={doRemove}>
                 <i className="fas fa-trash-alt"></i>
               </button>
             </div>

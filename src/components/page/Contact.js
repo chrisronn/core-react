@@ -21,6 +21,7 @@ const Contact = ({ match }) => {
     }, [dispatch, contact.id, customer.id, contid]);    
     
     if(contid === contact.id) {
+
       return (
         
             <Switch>
@@ -28,6 +29,7 @@ const Contact = ({ match }) => {
               <Route path={match.url} component={ContactEdit} />
             </Switch>
       );
+      
     } else {
 
       return ("");

@@ -2,7 +2,9 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useGenericForm from '../hooks/GenericForm';
-import { editContact } from "../../redux/actions/index";
+import { editContact, deleteContact } from "../../redux/actions/index";
+
+
 
 const ContactEdit = () => {
 
@@ -17,10 +19,10 @@ const ContactEdit = () => {
       history.push("/customer/" + customer.id + "/card");
     }
 
-    //const remove = cont => {    
-    // dispatch(deleteContact(cont));
-    //  history.push("/customer/" + customer.id + "/card");
-    //}
+    function doRemove() {    
+      dispatch(deleteContact(contact));
+      history.push("/customer/" + customer.id + "/card");
+    }
     
     //custom hook
     const {inputs, handleInputChange, handleSubmit} = useGenericForm(update,contact);
@@ -41,7 +43,7 @@ const ContactEdit = () => {
               </button>
             </div>
             <div className="float-right mb-1 mb-sm-0">
-              <button type="button" className="btn btn-default ml-2" title="Ta bort">
+              <button type="button" className="btn btn-default ml-2" title="Ta bort" onClick={doRemove}>
                 <i className="fas fa-trash-alt"></i>
               </button>
             </div>
