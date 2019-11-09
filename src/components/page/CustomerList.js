@@ -7,14 +7,15 @@ import BootstrapTable from 'react-bootstrap-table-next';
 const CustomerList = () => {
 
     const customers = useSelector(state => state.customers);
+
     const dispatch = useDispatch();
 
-    dispatch(updateSidebarClass("noSideMenu"));
-    dispatch(updateLoader(false));
+    dispatch(updateSidebarClass("noSideMenu"));    
 
     useEffect(() => {
+        dispatch(updateLoader(true));
         dispatch(getCustomers());            
-    }, [dispatch]);
+    }, [dispatch],customers);
 
     const colFormatter = (cell, row) => {
         let id = row.id;
